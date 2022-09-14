@@ -1,0 +1,5 @@
+name: get_module
+type: module
+description: get data from api and put it into a block
+package: Custom
+core_version_requirement: ^9 || ^10

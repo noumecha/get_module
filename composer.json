@@ -1,0 +1,13 @@
+{
+    "name": "noumecha/get_module",
+    "description": "\"A custom drupal module for retrieving data from an api\"",
+    "type": "drupal-custom-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "noumecha spaker",
+            "email": "noumechaivan@gmail.com"
+        }
+    ],
+    "require": {}
+}

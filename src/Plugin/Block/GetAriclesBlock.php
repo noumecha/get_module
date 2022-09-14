@@ -6,7 +6,7 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides an example block.
+ * Provides an getting data block.
  *
  * @Block(
  *   id = "get_module_example",
@@ -14,9 +14,9 @@ use Drupal\Core\Block\BlockBase;
  *   category = @Translation("get_module")
  * )
  */
-class ExampleBlock extends BlockBase {
+class GetArticlesBlock extends BlockBase {
 
-  /**
+/**
    * {@inheritdoc}
    */
   public function build() {

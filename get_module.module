@@ -1,6 +1,23 @@
 <?php
-
 /**
  * @file
- * Primary module hooks for get_module module.
+ * Primary module hooks for hot_models module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
  */
+/**
+ * Implements hook_theme().
+ */
+function get_module_theme() {
+  // pre-formatage et template pour un block
+  $hooks['layouthtml__get__get__articles_get_module_articles'] = [
+    'render element' => 'element',
+    'preprocess functions' => [
+      'template_preprocess_layouthtml__get__get__articles_get_module_articles'
+    ],
+    'file' => 'get_module.theme.inc'
+  ];  
+  return $hooks;
+}

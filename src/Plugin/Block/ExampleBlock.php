@@ -1,7 +1,8 @@
 <?php
 
 namespace Drupal\get_module\Plugin\Block;
-
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Block\BlockBase;
 
@@ -21,27 +22,25 @@ class ExampleBlock extends BlockBase {
    */
   public function build() {
 
-    /** @var \GuzzleHttp\Client $client */
-    $client = \Drupal::service('http_client_factory')->fromOptions([
-      'base_uri' => 'https://cat-fact.herokuapp.com/',
-    ]);
-
-    $response = $client->get('facts/random', [
-      'query' => [
-        'amount' => 2,
-      ]
-    ]);
-
-    $cat_facts = Json::decode($response->getBody());
-    $items = [];
-
-    foreach ($cat_facts as $cat_fact) {
-      $items[] = $cat_fact['text'];
+    $client = new Client();
+    $articles_title = [];
+    
+    try {
+    $response = $client->get(/*'https://swapi.dev/api/people',*/'http://portfolio.local/get/articles?_format=json');
+      $result = json_decode($response->getBody(), TRUE);
+      foreach($result as $r) {
+        $articles_title[] = $r['title']; 
+      }
+    }
+    catch (RequestException $e) {
+      // log exception
+      echo('error : '.$e);
     }
 
     return [
-      '#theme' => 'item_list',
-      '#items' => $items,
+      //'#theme' => 'list_items',
+      //'#items' => $articles_title,
+      var_dump($articles_title),
     ];
   }
 
